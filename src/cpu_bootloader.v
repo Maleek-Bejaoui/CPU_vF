@@ -8,7 +8,7 @@ module CPU_Bootloader (
 );
 
     // Composants internes
-    wire [15:0] cpu_ram_data_out;  
+    wire [15:0] cpu_ram_data_out,boot_ram_in;  
     wire [5:0] sig_adr, boot_ram_adr;
     wire carry, clear_carry, enable_mem, load_R1, load_accu, load_carry, w_mem;
     wire [2:0] sel_UAL_UT, sel_UAL_UC;
