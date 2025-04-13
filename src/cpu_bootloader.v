@@ -12,7 +12,8 @@ module CPU_Bootloader (
     wire [5:0] sig_adr, boot_ram_adr;
     wire carry, clear_carry, enable_mem, load_R1, load_accu, load_carry, w_mem;
     wire [2:0] sel_UAL_UT, sel_UAL_UC;
-    wire [15:0] ram_data_in, ram_data_out, UT_data_out;
+    //wire [15:0] ram_data_in;
+    wire [15:0] ram_data_out, UT_data_out;
     wire sig_rw, sig_ram_enable;
     wire [5:0] sig_ram_adr;
     wire [15:0] sig_ram_in;
