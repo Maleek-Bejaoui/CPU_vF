@@ -18,7 +18,7 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "top.v"
-    - "CPU_Bootloader.v"
+    - "cpu_bootloader.v"
     - "Accu_register.v"
     - "Carry_register.v"
     - "Ins_register.v"
@@ -39,16 +39,16 @@ project:
 pinout:
   # Inputs
   ui[0]: "clk"
-  ui[1]: "rst"
+  ui[1]: "rst_n"
   ui[2]: "ce"
-  ui[3]: "scan_memory"
-  ui[4]: "rx"
+  ui[3]: "ui_in[0]"
+  ui[4]: "ui_in[1]"
   ui[5]: ""
   ui[6]: ""
   ui[7]: ""
 
   # Outputs
-  uo[0]: "tx"
+  uo[0]: "uo_out[0]"
   uo[1]: ""
   uo[2]: ""
   uo[3]: ""
