@@ -20,10 +20,7 @@ module UART_recv (
         WAIT_STOP_BIT   = 3'd5,
         LAST_BIT_IS_ZERO= 3'd6;
     
-    //---------------------------------------------
-    // Constantes de timing
     // (pour un horloge ~100 MHz et un baud rate 115200)
-    //---------------------------------------------
     
     localparam [9:0] QUARTER        = 10'd216;  // ~1/4 de la période bit
     localparam [9:0] HALF           = 10'd433;  // ~1/2
@@ -33,6 +30,7 @@ module UART_recv (
     //---------------------------------------------
     // Registres internes
     //---------------------------------------------
+    
     reg [2:0] current_state, next_state; // registre d'état
     reg [3:0] nbbits;                    // compte le nombre de bits reçus (0..8)
     reg [9:0] cnt;                       // compteur pour les timings
