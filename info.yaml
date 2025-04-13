@@ -18,22 +18,22 @@ project:
   # Don't forget to also update `PROJECT_SOURCES` in test/Makefile.
   source_files:
     - "top.v"
-    - "cpu_bootloader.v"
     - "Accu_register.v"
     - "Carry_register.v"
+    - "Control_Unit.v"
     - "Ins_register.v"
     - "Prog_counter.v"
     - "R1_register.v"
     - "UAL.v"
-    - "UART_fifoed_send.v"
-    - "Control_Unit.v"
-    - "boot_loader.v"
-    - "byte_2_word.v"
-    - "fsm.v"
-    - "RAM_SP_64_8.v"
-    - "uart_recv.v"
+    - "UART_fi_send.v"
     - "UT.v"
-    - "word_2_byte.v"
+    - "boot_loaderVerilog.v"
+    - "byte2wordverilog.v"
+    - "cpu_bootloader.v"
+    - "fsm.v"
+    - "inst_uart_recvVerilog.v"
+    - "ram.v"
+    - "word_to_byte.v"
 
 # The pinout of your project. Leave unused pins blank. DO NOT delete or add any pins.
 pinout:
