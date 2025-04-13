@@ -10,9 +10,9 @@ module Prog_counter (
   output [5:0] ADR_OUT
 );
   reg [5:0] s_adr_in;
-
+  
   assign ADR_OUT = s_adr_in;
-  assign  carry = 0;
+
   always @(posedge clk or posedge rst)
     
     if (rst)
