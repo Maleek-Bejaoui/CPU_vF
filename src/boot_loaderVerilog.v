@@ -33,9 +33,7 @@ module boot_loader (
 
     reg         tx_data_valid;  // signal interne, piloté par la FSM
 
-    //----------------------------------------------------------
-    // Instances des sous-modules
-    //----------------------------------------------------------
+ 
     UART_recv inst_uart_recv (
         .clk   (clk),
         .reset (rst),
@@ -44,6 +42,7 @@ module boot_loader (
         .dat_en(rx_data_valid)
     );
 
+    /* verilator lint_off PINCONNECTEMPTY */
     uart_fifoed_send inst_uart_send (
         .clk_100MHz (clk),
         .reset      (rst),
@@ -54,7 +53,7 @@ module boot_loader (
         .fifo_afull (),
         .fifo_full  ()
     );
-
+/* verilator lint_off PINCONNECTEMPTY */
     byte_2_word b2w (
         .rst      (rst),
         .clk      (clk),
@@ -79,13 +78,12 @@ module boot_loader (
     // On indexe la RAM par rx_byte_count en écriture
     //----------------------------------------------------------
     always @(*) begin
-        ram_adr = rx_byte_count;    // 6 bits
-        ram_in  = rx_word;         // mot à écrire dans la RAM
+        ram_adr = rx_byte_count;    
+        ram_in  = rx_word;         
     end
 
-    //----------------------------------------------------------
     // rx_byte_count : compteur 0..63
-    //----------------------------------------------------------
+    
     always @(posedge clk or posedge rst) begin
         if (rst) begin
             rx_byte_count <= 6'd0;
