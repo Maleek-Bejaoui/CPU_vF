@@ -19,9 +19,9 @@ module uart_fifoed_send (
     assign top = (cnt == 0);
     assign TX = shift[0];
     assign fifo_empty = (n_elements == 0);
-    assign fifo_afull = (n_elements >= 4090);
-    assign fifo_full = (n_elements == 4096) || 
-                       (dat_en && nbbits < 12 && n_elements == 4095);
+    assign fifo_afull = (n_elements >= 122);
+    assign fifo_full = (n_elements == 128) || 
+        (dat_en && nbbits < 12 && n_elements == 127);
 
     wire [7:0] fifo_dout;
     reg fifo_we;
@@ -70,7 +70,7 @@ module uart_fifoed_send (
         if (reset) begin
             read_index <= 0;
         end else if ((n_elements > 0) && (nbbits >= 12)) begin
-            read_index <= (read_index == 4095) ? 0 : read_index + 1;
+            read_index <= (read_index == 127) ? 0 : read_index + 1;
         end
     end
 
@@ -78,7 +78,7 @@ module uart_fifoed_send (
     always @(posedge clk_100MHz) begin
         if (reset) begin
             n_elements <= 0;
-        end else if (dat_en && (n_elements < 4096)) begin
+        end else if (dat_en && (n_elements < 128)) begin
             if (nbbits < 12 || n_elements == 0)
                 n_elements <= n_elements + 1;
         end else if ((n_elements > 0) && (nbbits >= 12)) begin
@@ -94,10 +94,10 @@ module uart_fifoed_send (
             fifo_din <= 8'd0;
         end else begin
             fifo_we <= 0;
-            if (dat_en && (n_elements < 4096)) begin
+            if (dat_en && (n_elements < 128)) begin
                 fifo_din <= dat;
                 fifo_we <= 1;
-                write_index <= (write_index == 4095) ? 0 : write_index + 1;
+                write_index <= (write_index == 127) ? 0 : write_index + 1;
             end
         end
     end
