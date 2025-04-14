@@ -6,7 +6,7 @@ module fifo_ram_4k (
     input wire [7:0] din,
     output reg [7:0] dout
 );
-    reg [7:0] mem [0:4095];
+    reg [7:0] mem [0:127];
 
     always @(posedge clk) begin
         if (we) begin
