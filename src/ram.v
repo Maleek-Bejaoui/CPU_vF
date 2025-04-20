@@ -8,7 +8,7 @@ module RAM_SP_64_8 (
     output reg [15:0] data_out 
 );
 
-    reg [15:0] memory [0:7];  // RAM de 64 mots de 16 bits
+    reg [15:0] memory [0:15];  // RAM de 64 mots de 16 bits
 
     always @(posedge clk) begin
         if (ce) begin
